@@ -202,11 +202,14 @@ export default {
         method: this.xhrMethod,
         url: baseUrl,
         ...(this.xhrMethod === "GET" && {
-          params: options,
+          params: { ...options.params },
         }),
         ...(this.xhrMethod === "POST" && {
-          data: options,
+          data: { ...options.params },
         }),
+        headers: {
+          ...options.headers,
+        },
       }).catch((errors) => {
         alert(errors);
       });
