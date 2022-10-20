@@ -199,12 +199,12 @@ export default {
       let baseUrl = url.split("?")[0];
 
       let response = await axios({
-        method: this.xhrMethod,
+        method: this.method,
         url: baseUrl,
-        ...(this.xhrMethod === "GET" && {
+        ...(this.method === "GET" && {
           params: { ...options.params },
         }),
-        ...(this.xhrMethod === "POST" && {
+        ...(this.method === "POST" && {
           data: { ...options.params },
         }),
         headers: {
@@ -410,7 +410,7 @@ export default {
           (window.LaravelVueDatatable || {}).translate || {}
         ),
     },
-    xhrMethod: {
+    method: {
       type: String,
       default: "GET",
       validator: XHRMethodValidator,
